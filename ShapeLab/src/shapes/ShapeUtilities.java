@@ -14,7 +14,7 @@ public class ShapeUtilities {
 			case 1:
 				return new Rectangle (r.nextInt(100) + 1, r.nextInt(100) + 1);
 			default:
-				return new Rectangle (r.nextInt(100) + 1, r.nextInt(100) + 1);
+				return new Square (r.nextInt(100) + 1);
 		}
 	}
 	
