@@ -1,26 +1,29 @@
 package shapes;
 
 public class Triangle implements Shape {
-	private double side;
-	private double height;
-	public Triangle(double side, double height)
+	private double side1;
+	private double side2;
+	private double side3;
+	public Triangle(double side1, double side2, double side3)
 	{
-		this.side = side;
-		this.height = height;
+		this.side1 = side1;
+		this.side2 = side2;
+		this.side3 = side3;
 	}
 	
 	@Override
 	public double perimeter() {
-		return side * 3;
+		return side1 + side2 + side3;
 	}
 
 	@Override
 	public double area() {
-		return (side*0.5)*height;
+		double s = (side1 + side2 + side3)/2;
+		return Math.sqrt(s * (s-side1) * (s-side2) * (s-side3));
 	}
 
 	public String toString()
 	{
-		return "Triangle Side Length " + side + " Height " + height + " Area: " + this.area() + " Perimeter: " + this.perimeter();
+		return "Triangle Side1 Length " + side1 + "Triangle Side2 Length " + side2 + "Triangle Side3 Length " + side3 + " Area: " + this.area() + " Perimeter: " + this.perimeter();
 	}
 }
