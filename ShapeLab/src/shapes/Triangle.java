@@ -18,12 +18,12 @@ public class Triangle implements Shape {
 
 	@Override
 	public double area() {
-		double s = (side1 + side2 + side3)/2;
+		double s = ((side1 + side2 + side3)/2);
 		return Math.sqrt(s * (s-side1) * (s-side2) * (s-side3));
 	}
 
 	public String toString()
 	{
-		return "Triangle Side1 Length " + side1 + "Triangle Side2 Length " + side2 + "Triangle Side3 Length " + side3 + " Area: " + this.area() + " Perimeter: " + this.perimeter();
+		return "Triangle Side1 Length: " + side1 + " Side2 Length: " + side2 + " Side3 Length: " + side3 + " Area: " + this.area() + " Perimeter: " + this.perimeter();
 	}
 }
