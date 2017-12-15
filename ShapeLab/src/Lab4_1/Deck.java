@@ -3,8 +3,8 @@ package Lab4_1;
 import java.util.ArrayList;
 
 public class Deck {
-	ArrayList<Card> unDealt;
-	ArrayList<Card> Dealt;
+	private ArrayList<Card> unDealt = new ArrayList<Card>();
+	private ArrayList<Card> Dealt = new ArrayList<Card>();
 	
 	public Deck(String[] ranks, String[] suits, int[] pointValues)
 	{
@@ -34,5 +34,32 @@ public class Deck {
 		return unDealt.size();
 	}
 	
+	public Card deal()
+	{
+		if (unDealt.size() == 0)
+		{
+			return null;
+		}
+		else
+		{
+			this.Dealt.add(this.unDealt.get(this.size()-1));
+		}
+		return this.unDealt.remove(this.size()-1);
+	}
 	
+	public void shuffle()
+	{
+		for (int k = this.size()-1; k >= 0; k--)
+		{
+			int r = (int) (Math.random()*k)+1;
+			swap(this.unDealt, k, r);
+		}
+	}
+	
+	public static void swap(ArrayList<Card> arr, int a, int b)
+	{
+		Card temp = arr.get(a);
+		arr.set(a, arr.get(b));
+		arr.set(b, temp);
+	}
 }
