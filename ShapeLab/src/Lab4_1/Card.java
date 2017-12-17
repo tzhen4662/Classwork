@@ -3,7 +3,7 @@ package Lab4_1;
 public class Card {
 	String rank;
 	String suit;
-	int pointValue;
+	private int pointValue;
 	
 	public Card (String rank, String suit, int pointValue)
 	{
@@ -12,28 +12,32 @@ public class Card {
 		this.pointValue = pointValue;
 	}
 	
-	public void getRank(String rank)
+	public String getRank()
 	{
-		this.rank = rank;
+		return this.rank;
 	}
 	
-	public void getSuit(String suit)
+	public String getSuit()
 	{
-		this.suit = suit;
+		return this.suit;
 	}
 	
-	public void getPointValue(int pointValue)
+	public int getPointValue()
 	{
-		this.pointValue = pointValue;
+		return this.pointValue;
 	}
 
 	public boolean equals(Card otherCard)
 	{
-		if (pointValue == otherCard.pointValue)
+		if (this.pointValue == otherCard.pointValue)
 		{
 			return true;
 		}
 		return false;
 	}
 
+	public String toString()
+	{
+		return ("Rank: " + rank + " |" + " Suit: " + suit + " |" + " PointValue: " + pointValue);
+	}
 }
