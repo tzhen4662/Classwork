@@ -18,7 +18,7 @@ public class CSVUtilities {
 	public CSVUtilities(File csv)
 	{
 		ArrayList<String> CSVData = new ArrayList<String>();
-		Path pathToFile = Paths.get("Water_Consumption_In_The_New_York_City.csv");
+		Path pathToFile = Paths.get(csv.getAbsolutePath());
 		
 		try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII))
 		{
@@ -26,16 +26,41 @@ public class CSVUtilities {
 			while (line != null) 
 			{
 				String[] attributes = line.split(",");
+				this.CSVData.add(line);
+				line = br.readLine();
+				if (attributes != null)
+				{
+					for (int i = 0; i < line.length(); i++)
+					{
+						CSVData.add(line);
+					}
+				}
 			}
+		}
+		catch (IOException ioe) 
+		{
+			ioe.printStackTrace();
+		}
+		
 	}
 	
 	public List<String> getColumnHeaders()
 	{
-		
+		ArrayList<String> data = new ArrayList<String>();
+		if (!CSVData.isEmpty())
+		{
+			String[] split = CSVData.get(0).split(",");
+			for(int i = 0; i < split.length; i++)
+			{
+				data.add(split[i]);
+			}
+		}
+		return data;
 	}
 	
 	public List<String> getDataString(int column)
 	{
+		ArrayList<String> data = new ArrayList<String>();
 		
 	}
 	
