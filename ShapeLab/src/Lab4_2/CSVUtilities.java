@@ -12,13 +12,12 @@ import java.util.ArrayList;
 import java.util.List; 
 
 public class CSVUtilities {
-	ArrayList<String> CSVData;
+	ArrayList<String> CSVData = new ArrayList<String>();
 	int numColumns;
 	
 	public CSVUtilities(File csv)
 	{
-		ArrayList<String> CSVData = new ArrayList<String>();
-		Path pathToFile = Paths.get(csv.getAbsolutePath());
+		Path pathToFile = Paths.get("Water_Consumption_In_The_New_York_City.csv");
 		
 		try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII))
 		{
@@ -28,20 +27,13 @@ public class CSVUtilities {
 				String[] attributes = line.split(",");
 				this.CSVData.add(line);
 				line = br.readLine();
-				if (attributes != null)
-				{
-					for (int i = 0; i < line.length(); i++)
-					{
-						CSVData.add(line);
-					}
-				}
 			}
 		}
 		catch (IOException ioe) 
 		{
 			ioe.printStackTrace();
 		}
-		
+		this.numColumns = getColumnHeaders().size();
 	}
 	
 	public List<String> getColumnHeaders()
@@ -61,16 +53,45 @@ public class CSVUtilities {
 	public List<String> getDataString(int column)
 	{
 		ArrayList<String> data = new ArrayList<String>();
-		
+		for (int i = 0; i < CSVData.size(); i++)
+		{
+			data.add(CSVData.get(i));
+		}
+		return data;
 	}
 	
 	public List<Integer> getDataInt(int column)
 	{
-		
+		ArrayList<Integer> data = new ArrayList<Integer>();
+		for(int i = 0; i < CSVData.size(); i++)
+		{
+			try
+			{
+				data.add(Integer.parseInt(CSVData.get(i)));
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("no");
+				//continue;
+			}
+		}
+		return data;
 	}
 
 	public List<Double> getDataDouble(int column)
 	{
-		
+		ArrayList<Double> data = new ArrayList<Double>();
+		for(int i = 0; i < CSVData.size(); i++)
+		{
+			try
+			{
+				data.add(Double.parseDouble(CSVData.get(i)));
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("no");
+			}
+		}
+		return data;
 	}
 }
