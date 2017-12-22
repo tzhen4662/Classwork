@@ -17,6 +17,7 @@ public class CSVUtilities {
 	
 	public CSVUtilities(File csv)
 	{
+		numColumns = 0;
 		Path pathToFile = Paths.get("Water_Consumption_In_The_New_York_City.csv");
 		
 		try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII))
@@ -63,17 +64,17 @@ public class CSVUtilities {
 	public List<Integer> getDataInt(int column)
 	{
 		ArrayList<Integer> data = new ArrayList<Integer>();
-		for(int i = 0; i < CSVData.size(); i++)
+		for(int i = 1; i < CSVData.size(); i++)
 		{
-			try
+			/*try
 			{
 				data.add(Integer.parseInt(CSVData.get(i)));
 			}
 			catch(NumberFormatException e)
 			{
 				System.out.println("no");
-				//continue;
-			}
+			}*/
+			data.add(Integer.parseInt(CSVData.get(i)));
 		}
 		return data;
 	}
@@ -81,16 +82,17 @@ public class CSVUtilities {
 	public List<Double> getDataDouble(int column)
 	{
 		ArrayList<Double> data = new ArrayList<Double>();
-		for(int i = 0; i < CSVData.size(); i++)
+		for(int i = 1; i < CSVData.size(); i = i++)
 		{
-			try
+			/*try
 			{
 				data.add(Double.parseDouble(CSVData.get(i)));
 			}
 			catch(NumberFormatException e)
 			{
 				System.out.println("no");
-			}
+			}*/
+			data.add(Double.parseDouble(CSVData.get(i)));
 		}
 		return data;
 	}

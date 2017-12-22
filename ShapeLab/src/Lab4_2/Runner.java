@@ -16,11 +16,10 @@ public class Runner {
 	{
 		File plzwork = new File("Water_Consumption_In_The_New_York_City.csv");
 		CSVUtilities plswork = new CSVUtilities(plzwork);
-		List<Integer> column = plswork.getDataInt(1);
-		/* for (int i = 0; i < column.size(); i++)
+		List<String> column = plswork.getDataString(0);
+		for (int i = 0; i < column.size(); i++)
 		{
-			System.out.print(i);
-		} */
-		System.out.print(column);
+			System.out.println(column.get(i));
+		}
 	}
 }
